@@ -1728,12 +1728,6 @@ https://www.postgresql.org/docs/current/explicit-locking.html#LOCKING-TABLES</de
                     <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>21</type>
-                            <params>return value.search(/accepting connections/)&gt;0 ? 1 : 0</params>
-                            <error_handler>0</error_handler>
-                            <error_handler_params/>
-                        </step>
-                        <step>
                             <type>20</type>
                             <params>1h</params>
                             <error_handler>0</error_handler>
@@ -5960,7 +5954,7 @@ https://www.postgresql.org/docs/current/routine-vacuuming.html#VACUUM-FOR-WRAPAR
             <dependencies>
                 <dependency>
                     <name>PostgreSQL: Service is down</name>
-                    <expression>{Template DB PostgreSQL:pgsql.ping[&quot;{$PG.HOST}&quot;,&quot;{$PG.PORT}&quot;,&quot;{$PG.USER}&quot;,&quot;{$PG.DB}&quot;].last()} = 0</expression>
+                    <expression>{Template DB PostgreSQL:pgsql.ping[&quot;{$PG.HOST}&quot;,&quot;{$PG.PORT}&quot;,&quot;{$PG.USER}&quot;,&quot;{$PG.DB}&quot;].last()} > 0</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
